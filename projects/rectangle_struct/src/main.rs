@@ -4,6 +4,14 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+    fn can_hold(&self, other : &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
 fn main() {
 
     let width1 = 30;
@@ -19,6 +27,10 @@ fn main() {
     println!("The area of the rectangle is {} square pixels.", area_struct(&rect2));
     println!("rect2 is {:?}", rect2);
     dbg!(rect2);
+    let rect3 = Rectangle { width: 10, height: 40 };
+    let rect4 = Rectangle { width: 60, height: 45 };
+    println!("rect4 can hold rect3? {}", rect4.can_hold(&rect3));
+    println!("rect3 can hold rect4? {}", rect3.can_hold(&rect4));
 }
 fn area(width: u32, height: u32) -> u32 {
     width * height
