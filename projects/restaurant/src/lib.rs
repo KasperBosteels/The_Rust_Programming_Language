@@ -10,10 +10,16 @@ mod front_of_house {
         fn take_payments() {}
     }
 }
-pub fn eat_at_restaurant(){
-    let order1 = back_of_house::Appetizer::Salad;
-    let order2 = back_of_house::Appetizer::Soup;
+pub use crate::front_of_house::hosting;
+
+mod customer {
+    use create::front_of_house::hosting;
+    pub fn eat_at_restaurant(){
+        hosting::add_to_waitlist();
+    }
 }
+
+
 
 fn deliver_order() {}
 mod back_of_house {
