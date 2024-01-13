@@ -25,4 +25,15 @@ fn main() {
         println!("{i}");
     }
 
+    enum spread_sheet_cell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        spread_sheet_cell::Float(3),
+        spread_sheet_cell::Int(11),
+        spread_sheet_cell::Text("Bizerba");
+    ];
 }
