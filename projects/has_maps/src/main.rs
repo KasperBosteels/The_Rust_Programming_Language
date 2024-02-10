@@ -16,4 +16,13 @@ fn main () {
     for (key, value) in &scores {
         println!("{key}: {value}");
     }
+
+    let field_name = String::from("Favorite COlor");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name,field_value);
+    //owner for name and value is now map origin is now invalid.
+
 }
+
