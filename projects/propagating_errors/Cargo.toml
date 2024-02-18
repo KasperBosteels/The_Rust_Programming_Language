@@ -1,5 +1,5 @@
 [package]
-name = "has_maps"
+name = "propagating_errors"
 version = "0.1.0"
 edition = "2021"
 

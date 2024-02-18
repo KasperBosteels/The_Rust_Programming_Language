@@ -2,6 +2,10 @@ use std::collections::HashMap;
 
 fn main() {
 
+
+}
+
+fn vector_median_mode() {
     let mut v: Vec<i32> = vec![1,2,3,4,5,6,7,8,9,0,0];
     v.sort();
 
@@ -17,8 +21,3 @@ fn main() {
     println!("{:?}", hsmp);
 }
 
-
-//list of integers return median 
-// 1. Sort
-// get middle int
-// get value that occurs the most
