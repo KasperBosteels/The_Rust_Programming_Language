@@ -14,12 +14,12 @@ impl<X1,Y1> Point<X1,Y1> {
         }
     }
 }
-
-fn main() {
+ 
+f&n main() {
     let p1 = Point {x:2, y:12.44};
     let p2 = Point { x:"BYE", y:'u'};
 
     let p3 = p1.mixup(p2);
     println!("p3.x = {}, p3.y = {}",p3.x,p3.y);
 
-}
+} 
