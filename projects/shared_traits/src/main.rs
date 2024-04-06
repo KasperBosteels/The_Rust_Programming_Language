@@ -1,6 +1,8 @@
 
-pub trait summary {
-    fn summarize(&self) ->  String;
+pub trait Summary {
+    fn summarize(&self) ->  String {
+        String::from("(Read more...)")
+    }
 }
 
 
@@ -37,5 +39,22 @@ impl Summary for Tweet {
 
 
 fn main() {
-    println!("Hello, world!");
+
+let tweet = Tweet {
+    username:String::from("Horese_ebooks"),
+    content: String::from("of course, as you already know people"),
+    reply:false,
+    retweet:false,
+};
+    println!("1 new tweet: {}", tweet.summarize());
+
+
+    let article = NewsArticle {
+        headline: String::from("Penguins win the stanley cup championship!"),
+        location: String::from("Pittsburg, PA, USA"),
+        author: String::from("Iceburgh"),
+        content: String::from("The pittsburg Penguins once again are the best hockey team in the NHL"),
+    };
+
+    println!("news artictle available: {}", article.summarize());
 }
