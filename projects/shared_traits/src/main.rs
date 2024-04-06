@@ -1,8 +1,13 @@
+use std::fmt;
+
+
 
 pub trait Summary {
     fn summarize(&self) ->  String {
-        String::from("(Read more...)")
+        format!("(Read more from {}...)",self.summarize_author())
     }
+
+    fn summarize_author(&self) ->String;
 }
 
 
@@ -14,6 +19,10 @@ pub struct NewsArticle {
 }
 
 impl Summary for NewsArticle {
+    fn summarize_author(&self) ->String {
+        format!("(Read more from {}...", self.author)
+    }
+
     fn summarize(&self) -> String {
         format!(
             "{}, by {} ({})",
@@ -24,6 +33,7 @@ impl Summary for NewsArticle {
     }
 }
 
+
 pub struct Tweet {
     pub username:String,
     pub content:String,
@@ -31,10 +41,22 @@ pub struct Tweet {
     pub retweet:bool,
 }
 
-impl Summary for Tweet {
-    fn summarize(&self)->  String {
-        format!("{}: {}", self.username,self.content)
+
+impl fmt::Display for Tweet {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f,"{}",self.content)
     }
+}
+
+impl Summary for Tweet {
+    fn summarize_author(&self) ->String {
+        format!("@{}", self.username)
+    }
+    
+    fn summarize(&self) ->  String {
+        format!("(Read more from {}...)",self.summarize_author())
+    }
+    
 }
 
 

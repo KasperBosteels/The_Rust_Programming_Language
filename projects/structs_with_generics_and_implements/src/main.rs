@@ -15,7 +15,7 @@ impl<X1,Y1> Point<X1,Y1> {
     }
 }
  
-f&n main() {
+fn main() {
     let p1 = Point {x:2, y:12.44};
     let p2 = Point { x:"BYE", y:'u'};
 
