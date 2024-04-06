@@ -83,10 +83,6 @@ U: Display + Debug,
 
 */
 
-
-
-
-
 fn main() {
 
 let tweet = Tweet {
