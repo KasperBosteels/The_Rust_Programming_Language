@@ -1,0 +1,12 @@
+dit is een test text.
+
+deze text bevat wat random text om de minigrep console applicatie te testen.
+
+i'm nobodoy who are you?
+are you nobody too?
+then there's a pair of us - don't tell!
+
+How dreary to be somebody!
+how public like a frog
+To tell you name the livelong day
+to an admiring bog!
