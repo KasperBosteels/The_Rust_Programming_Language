@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 enum State{
     Antwerp,
     NewYork,

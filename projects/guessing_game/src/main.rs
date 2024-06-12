@@ -19,7 +19,7 @@ fn main() {
         Ok(num) =>  num,
         Err(e) => continue,
     };
-        if gues  < 1 || gues > 100 {
+        if guess  < 1 || guess > 100 {
             println!("The secret nuymber will be between 1 and 100.");
             continue;
         }

@@ -22,12 +22,13 @@ struct Config {
     query_path:String,
 }
 
-
-fn parse_args(args:&[String]) -> Config {
-    let path = args[0].clone();
-    let query = args[1].clone();
-    let query_path = args[2].clone();
-    Config{
-        path,query,query_path
+impl Config {
+    fn new(args:&[String]) -> Config{
+        let path = args[0].clone();
+        let query = args[1].clone();
+        let query_path = args[2].clone();
+        Config{
+            path,query,query_path
+        }
     }
 }

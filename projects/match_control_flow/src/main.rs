@@ -39,7 +39,7 @@ fn match_dice_roll (x:i8){
     {
         3 => add_fancy_hat(),
         7 => remove_fancy_hat(),
-        other  => move_player(other),
+        other => move_player(other),
         //catch all but no value to assign
         //_ => add_fancy_hat(),
         //how to catch all and execute nothing
@@ -48,7 +48,7 @@ fn match_dice_roll (x:i8){
 }
 fn add_fancy_hat () {}
 fn remove_fancy_hat () {}
-fn move_player(num_spaces:u8) {}
+fn move_player(num_spaces:i8) {}
 fn main () {
     value_in_cents(Coin::Quarter(UsState::Alabama));
     let five = Some(5);
