@@ -5,8 +5,12 @@ deze text bevat wat random text om de minigrep console applicatie te testen.
 i'm nobodoy who are you?
 are you nobody too?
 then there's a pair of us - don't tell!
-
+this is dOg 1
 How dreary to be somebody!
 how public like a frog
 To tell you name the livelong day
+DOG 2
+
 to an admiring bog!
+
+this is a small dog 3
