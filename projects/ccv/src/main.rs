@@ -14,20 +14,25 @@ fn main() {
 
 fn calculate_code(day:&u32, hour:&u32) -> Result<(), Error> {
     let hour = hour.to_owned();
-    print!("{hour}");
-    let start_hour = hour - 5;
-    
+    println!("{hour}");
+    let mut start_hour = hour;
+    if hour > 5 {
+     start_hour -= 5;
+    }
     for iteration in 0..10 {
         let hour_to_calculate = start_hour + iteration;
         let hour_with_date = (day + hour_to_calculate) + 2;
         let reversed_numbers = switch_numbers(&hour_with_date);
-        let first_number_diff = reversed_numbers.to_string().chars().next().and_then(|c| c.to_digit(10)).unwrap() - 1;
+        let mut first_number_diff = reversed_numbers.to_string().chars().next().and_then(|c| c.to_digit(10)).unwrap() - 1;
+        if first_number_diff < 10 {
+            first_number_diff =  format!("0{}",first_number_diff).parse().unwrap();
+        }
         let last_number_sum = reversed_numbers.to_string().chars().last().and_then(|c| c.to_digit(10)).unwrap() + 2;
-
+        let text_to_print =format!("{}{}{}",first_number_diff,reversed_numbers,last_number_sum);
         if hour_to_calculate == hour {
-            println!( "{first_number_diff} {reversed_numbers} {last_number_sum} <== current time");
+            println!("{text_to_print} <== current time" );
         }else{
-            println!( "{first_number_diff} {reversed_numbers} {last_number_sum}");
+            println!("{text_to_print}");
         }
     }   
     Ok(())
