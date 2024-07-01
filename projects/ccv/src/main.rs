@@ -26,13 +26,15 @@ fn main() {
 fn calculate_code(day: &u32, hour: &u32) -> Result<(), Error> {
     let hour_plus_one = hour.to_owned() + 1;
     let mut start_hour = hour_plus_one;
+    let mut day =day.to_owned();
     if hour_plus_one > 5 {
         start_hour -= 5;
     }
     for iteration in 0..10 {
         let mut hour_to_calculate = start_hour + iteration;
-        if hour_to_calculate > 24 || hour_to_calculate == 0{
-            hour_to_calculate = 1;
+        if hour_to_calculate > 25 || hour_to_calculate == 0{
+            hour_to_calculate = 2;
+            day += 1;
         }
         let hour_with_date = (day + hour_to_calculate) + 2;
         let reversed_numbers = switch_numbers(&hour_with_date);
