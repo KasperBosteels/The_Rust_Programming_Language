@@ -52,5 +52,13 @@ impl Inventory {
         println!(
         "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
-        );
+        ); 
+
+        
+        let user_pref3 = Some(ShirtColor::Blue);
+        let giveaway3 = store.giveaway(user_pref3);
+        println!(
+        "The user with preference {:?} gets {:?}",
+        user_pref3, giveaway3
+        ); 
     }
