@@ -1,12 +1,12 @@
+use std::env;
 use std::error::Error;
 use std::fs;
-use std::env;
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let content = fs::read_to_string(config.query_path)?;
 
     let results = if config.ignore_case {
-        case_insencitive_search(&config.query,&content)
+        case_insencitive_search(&config.query, &content)
     } else {
         search(&config.query, &content)
     };
@@ -25,33 +25,35 @@ pub struct Config {
     pub ignore_case: bool,
 }
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() < 3 {
-            return Err("not enough arguments");
-        }
-        let path = args[0].clone();
-        let query = args[1].clone();
-        let query_path = args[2].clone();
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        let path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Unable to find exection Path"),
+        };
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
+        let query_path = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query path"),
+        };
+
         let ignore_case = env::var("IGNORE_CASE").is_ok();
         Ok(Config {
             path,
             query,
             query_path,
-            ignore_case
+            ignore_case,
         })
     }
 }
 
 pub fn search<'a>(query: &str, content: &'a str) -> Vec<&'a str> {
-    let mut results = Vec::new();
-    
-    for line in content.lines() {
-        if line.contains(query) {
-            results.push(line);
-        }
-    }
-
-    results
+    content
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
 pub fn case_insencitive_search<'a>(query: &str, content: &'a str) -> Vec<&'a str> {
@@ -77,7 +79,7 @@ mod tests {
         let content = "\
         rust:
         safe, fast, productive.
-        pick three. 
+        pick three.
         Duct tape";
         assert_eq!(vec!["safe, fast, productive."], search(query, content));
     }
