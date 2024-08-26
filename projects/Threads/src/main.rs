@@ -1,4 +1,4 @@
-use std::{ sync::mpsc, thread::{ self }, time::Duration };
+use std::{ sync::{mpsc, Mutex}, thread::{ self }, time::Duration };
 
 fn main() {
     let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -20,7 +20,7 @@ fn main() {
 
 
     // sending data from one thread to another
-    
+
     let (tx,rx) = mpsc::channel();
     let tx1 = tx.clone();
     thread::spawn(move || {
@@ -50,7 +50,7 @@ fn main() {
 
         for val in vals {
             tx.send(val).unwrap();
-            thread::sleep(Duration::from_secs(1))
+            thread::sleep(Duration::from_millis(5))
         }
     });
 
@@ -62,4 +62,17 @@ fn main() {
         println!("hi number {i} from main thread");
         thread::sleep(Duration::from_millis(1));
     }
+
+
+
+
+    // Mutex shared states between threads
+
+    let m = Mutex::new(5);
+    {
+        let mut num = m.lock().unwrap();
+
+        *num += 1;
+    }
+    println!("m = {:?}", m);
 }
