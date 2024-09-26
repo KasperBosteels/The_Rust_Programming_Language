@@ -1,9 +1,9 @@
 [package]
-name = "ccv_service_code_generator"
+name = "ccv"
 description = "CCV service code generator"
 authors = ["Kasper Bosteels"]
 version = "1.0.0"
-edition = "2024"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
